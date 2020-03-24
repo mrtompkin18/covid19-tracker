@@ -53,7 +53,7 @@ export default () => {
     return (
         <Layout>
             <div className="top-section">
-                <img className="logo" src="images/logo.svg" width="230" />
+                <img className="logo" src="images/logo.png" width="230" />
                 <p>ติดตามสถานะการณ์ผู้เชื้อไวรัส Covid-19 ในประเทศไทยและทั่วโลก</p>
             </div>
             <div className="filter-type-section">

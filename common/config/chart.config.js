@@ -42,6 +42,14 @@ export function getDonutConfig(categories) {
                 colors: '#b1afee',
             },
         },
+        responsive: [{
+            breakpoint: 418,
+            options: {
+                legend: {
+                    position: "bottom",
+                }
+            },
+        }]
     }
 }
 

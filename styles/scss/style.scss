@@ -14,7 +14,7 @@ body {
   background-position: right top;
   color: $text-color;
   font-size: 16px;
-  font-family: "Athiti";
+  font-family: "Athiti", "Poppins";
 }
 
 .container-fluid {
@@ -66,7 +66,7 @@ body {
   top: 35px;
   .covid-number-card {
     @media (max-width: 991px) {
-      margin: 20px 0px;
+      margin: 10px 0px;
     }
     cursor: pointer;
     padding: 30px;
@@ -121,6 +121,9 @@ body {
 
 .covid-bar-chart-card,
 .covid-donut-chart-card {
+  @media (max-width: 991px) {
+    margin: 10px 0px;
+  }
   margin-top: 25px;
   padding: 30px 30px 0px 30px;
   border-radius: 15px;
