@@ -2,9 +2,9 @@
   "name": "covid19-tracker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "pages/index.js",
   "scripts": {
-    "dev": "next -p 5000",
+    "dev": "next",
     "build": "next build",
     "start": "next start"
   },
