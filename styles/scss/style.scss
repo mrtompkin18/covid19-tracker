@@ -158,3 +158,22 @@ body {
   color: #fff !important;
   backdrop-filter: saturate(180%) blur(10px) !important;
 }
+
+.credit {
+  z-index: 999;
+  position: fixed;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 8px 12px;
+  font-family: "Poppins";
+  font-size: 11px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-radius: 20px;
+  a {
+    color: #fff !important;
+    font-weight: 600;
+  }
+}
