@@ -1,7 +1,8 @@
+import React from "react";
 import numeral from "numeral";
 import moment from "moment";
 
-export default function Card({ className = "", type, title, number = 0, lastUpdate }) {
+function Card({ className = "", type, title, number = 0, lastUpdate }) {
     var cardStyle = `covid-number-card ${className} `;
     if (type == "confirmed") {
         cardStyle = `${cardStyle} covid-confirmed-card`;
@@ -35,3 +36,5 @@ export default function Card({ className = "", type, title, number = 0, lastUpda
         </div>
     )
 }
+
+export default React.memo(Card);

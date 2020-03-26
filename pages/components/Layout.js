@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-export default function Layout({ children }) {
+function Layout({ children }) {
     return (
         <div>
             <Head>
@@ -22,3 +22,5 @@ export default function Layout({ children }) {
         </div>
     )
 }
+
+export default Layout;

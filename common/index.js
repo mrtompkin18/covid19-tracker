@@ -2,11 +2,11 @@ import _ from "lodash";
 
 export const FILTER_TYPE = { THAILAND: "TH", GLOBAL: "GL" };
 
-export function tranformsDonutData(data) {
+export function transformDonutData(data) {
     const categories = ["ผู้ติดเชื้อ", "ผู้รับการรักษา", "ผู้เสียชีวิต"];
-    const series = Object.values(data).reduce((prev, val) => {
-        return prev.concat(val.value)
-    }, []).slice(0, 3);
+    const series = Object.values(data)
+        .reduce((prev, val) => prev.concat(val.value), [])
+        .slice(0, 3);
 
     return {
         series,
@@ -14,13 +14,11 @@ export function tranformsDonutData(data) {
     }
 }
 
-export function tranformsBarData(data) {
-    let sorted = _.orderBy(data, 'reportDate')
-        .reverse()
-        .slice(0, 7);
+export function transformBarData(data) {
+    const size = data.length;
 
-    sorted = sorted
-        .reverse()
+    // Get only 7-day latest
+    const transformedData = data.slice(size - 7, size)
         .reduce((prev, val) => {
             return {
                 ...prev,
@@ -38,8 +36,8 @@ export function tranformsBarData(data) {
             categories: []
         });
 
-    const series = [{ name: 'ผู้ติดเชื้อ', data: sorted.totalConfirmed }];
-    const { categories } = sorted;
+    const series = [{ name: 'ผู้ติดเชื้อ', data: transformedData.totalConfirmed }];
+    const { categories } = transformedData;
 
     return {
         series,

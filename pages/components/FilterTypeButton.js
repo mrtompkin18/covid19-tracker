@@ -1,14 +1,16 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { FILTER_TYPE } from "../../common";
 
-export default function FilterTypeButton({ filterType, setFilterType }) {
+function FilterTypeButton({ filterType, setFilterType }) {
     const [isGlobal, setIsGlobal] = useState(true);
 
     useEffect(() => {
-        if (filterType === FILTER_TYPE.THAILAND) {
-            setIsGlobal(false);
-        } else {
-            setIsGlobal(true);
+        switch (filterType) {
+            case FILTER_TYPE.GLOBAL:
+                return setIsGlobal(true);
+            case FILTER_TYPE.THAILAND:
+                return setIsGlobal(false);
         }
     }, [filterType]);
 
@@ -40,3 +42,5 @@ export default function FilterTypeButton({ filterType, setFilterType }) {
         </div>
     )
 }
+
+export default React.memo(FilterTypeButton);
