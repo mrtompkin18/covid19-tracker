@@ -14,7 +14,9 @@ import * as API from "./api/covid.api";
 
 const override = css`
   display: block;
-  margin: 30px auto;
+  position:absolute;
+  top:50%;
+  left:50%;
   opacity: 0.3;
   border-color: #fff;
 `;
@@ -78,16 +80,7 @@ function Index() {
         )
     }
 
-    const renderChartSection = (loading) => {
-        if (loading) {
-            return (
-                <Loader
-                    size={60}
-                    css={override}
-                />
-            )
-        }
-
+    const renderChartSection = () => {
         return (
             <div className="covid-stats-section">
                 <div className="row">
@@ -140,6 +133,15 @@ function Index() {
                     </div>
                 </div>
             </div>
+        )
+    }
+
+    if (loading) {
+        return (
+            <Loader
+                size={40}
+                css={override}
+            />
         )
     }
 
