@@ -5,8 +5,9 @@ import { getBarConfig } from "../common/config/chart.config";
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-function BarChart({ data, loading }) {
+function BarChart({ data }) {
     const { series, categories } = data;
+    if (!series && !categories) return null;
     return (
         <Chart
             type="area"

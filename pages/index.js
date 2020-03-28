@@ -33,11 +33,9 @@ function Index() {
     const fetchData = async () => {
         setLoading(true);
 
-        const [covidThai, covidGlobal, covidDaily] = await Promise.all([
-            API.covidThai(),
-            API.covidGlobal(),
-            API.covidDaily()
-        ]);
+        const covidThai = await API.covidThai();
+        const covidGlobal = await API.covidGlobal();
+        const covidDaily = await API.covidDaily();
 
         setBarchart(transformBarData(covidDaily.data));
 
@@ -153,7 +151,7 @@ function Index() {
             </div>
             {renderFilterTypeBtn()}
             {renderCardSection()}
-            {renderChartSection(loading)}
+            {renderChartSection()}
         </Layout>
     )
 }
