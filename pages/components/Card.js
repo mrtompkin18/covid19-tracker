@@ -2,10 +2,10 @@ import React from "react";
 import numeral from "numeral";
 import moment from "moment";
 
-function Card({ className = "", type, title, number = 0, lastUpdate }) {
-    var cardStyle = `covid-number-card ${className} `;
+function Card({ type, title, number = 0, lastUpdate }) {
+    var cardStyle = "covid-number-card"
     if (type == "confirmed") {
-        cardStyle = `${cardStyle} covid-confirmed-card`;
+        cardStyle = "covid-number-card covid-confirmed-card";
     }
 
     const getIconType = (type) => {

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import _ from "lodash";
+import Loader from "react-spinners/ClipLoader";
+import { css } from "@emotion/core";
 
 import Layout from "./components/Layout";
 import FilterTypeButton from "./components/FilterTypeButton"
@@ -9,6 +11,13 @@ import DonutChart from "../common/DonutChart";
 
 import { FILTER_TYPE, transformBarData, transformDonutData } from "../common";
 import * as API from "./api/covid.api";
+
+const override = css`
+  display: block;
+  margin: 30px auto;
+  opacity: 0.3;
+  border-color: #fff;
+`;
 
 function Index() {
     //State
@@ -21,9 +30,12 @@ function Index() {
 
     const fetchData = async () => {
         setLoading(true);
-        const covidThai = await API.covidThai();
-        const covidGlobal = await API.covidGlobal();
-        const covidDaily = await API.covidDaily();
+
+        const [covidThai, covidGlobal, covidDaily] = await Promise.all([
+            API.covidThai(),
+            API.covidGlobal(),
+            API.covidDaily()
+        ]);
 
         setBarchart(transformBarData(covidDaily.data));
 
@@ -33,7 +45,6 @@ function Index() {
         });
 
         setFilterType(FILTER_TYPE.GLOBAL);
-
         setLoading(false);
     }
 
@@ -66,8 +77,17 @@ function Index() {
             </div>
         )
     }
-    const renderChartSection = () => {
-        if (loading) return null;
+
+    const renderChartSection = (loading) => {
+        if (loading) {
+            return (
+                <Loader
+                    size={60}
+                    css={override}
+                />
+            )
+        }
+
         return (
             <div className="covid-stats-section">
                 <div className="row">
@@ -89,8 +109,6 @@ function Index() {
     }
 
     const renderCardSection = () => {
-        if (loading) return null;
-
         const { confirmed, recovered, deaths, lastUpdate } = filteredData;
 
         return (
@@ -106,7 +124,6 @@ function Index() {
                     </div>
                     <div className="col-lg-4">
                         <Card
-                            className="float-shadow"
                             type="recovered"
                             title="จำนวนผู้รับรักษา"
                             number={recovered?.value}
@@ -126,7 +143,6 @@ function Index() {
         )
     }
 
-    if (loading) return null;
     return (
         <Layout>
             <div className="top-section">
@@ -135,7 +151,7 @@ function Index() {
             </div>
             {renderFilterTypeBtn()}
             {renderCardSection()}
-            {renderChartSection()}
+            {renderChartSection(loading)}
         </Layout>
     )
 }

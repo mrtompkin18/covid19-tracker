@@ -8,8 +8,6 @@ const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 function DonutChart({ data }) {
     const { series, categories } = data;
 
-    if (!(series && categories)) return null;
-
     return (
         <Chart
             type="donut"

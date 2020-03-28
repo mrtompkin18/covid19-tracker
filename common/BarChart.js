@@ -1,16 +1,12 @@
 import React from "react";
-import _ from "lodash";
 import dynamic from 'next/dynamic';
 
 import { getBarConfig } from "../common/config/chart.config";
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-function BarChart({ data }) {
+function BarChart({ data, loading }) {
     const { series, categories } = data;
-
-    if (!(series && categories)) return null;
-
     return (
         <Chart
             type="area"
