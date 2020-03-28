@@ -17,14 +17,14 @@ const override = css`
   position:absolute;
   top:50%;
   left:50%;
-  opacity: 0.3;
-  border-color: #fff;
+  opacity: 0.4;
+  transform: translate(-50%,-50%);
 `;
 
 function Index() {
     //State
     const [loading, setLoading] = useState(false);
-    const [filterType, setFilterType] = useState();
+    const [filterType, setFilterType] = useState(FILTER_TYPE.GLOBAL);
     const [filteredData, setFilteredData] = useState({});
     const [covid, setCovid] = useState({ thailand: {}, global: {} });
     const [barChart, setBarchart] = useState({});
@@ -33,9 +33,11 @@ function Index() {
     const fetchData = async () => {
         setLoading(true);
 
-        const covidThai = await API.covidThai();
-        const covidGlobal = await API.covidGlobal();
-        const covidDaily = await API.covidDaily();
+        const [covidThai, covidGlobal, covidDaily] = await Promise.all([
+            API.covidThai(),
+            API.covidGlobal(),
+            API.covidDaily()
+        ]);
 
         setBarchart(transformBarData(covidDaily.data));
 
@@ -44,7 +46,6 @@ function Index() {
             global: covidGlobal.data,
         });
 
-        setFilterType(FILTER_TYPE.GLOBAL);
         setLoading(false);
     }
 
@@ -65,7 +66,7 @@ function Index() {
         }
         setFilteredData(data);
         setDonutchart(transformDonutData(data));
-    }, [filterType]);
+    }, [filterType, covid]);
 
     const renderFilterTypeBtn = () => {
         return (
@@ -139,6 +140,7 @@ function Index() {
             <Loader
                 size={40}
                 css={override}
+                color="white"
             />
         )
     }
