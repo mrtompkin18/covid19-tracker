@@ -18,6 +18,8 @@
     "@yisheng90/react-loading": "^1.0.4",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
+    "animate.css": "^3.7.2",
+    "animate.css-react": "^1.0.0",
     "apexcharts": "^3.17.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
