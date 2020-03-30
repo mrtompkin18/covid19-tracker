@@ -23,7 +23,7 @@ const override = css`
 
 function Index() {
     //State
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [filterType, setFilterType] = useState(FILTER_TYPE.GLOBAL);
     const [filteredData, setFilteredData] = useState({});
     const [covid, setCovid] = useState({ thailand: {}, global: {} });
@@ -31,8 +31,6 @@ function Index() {
     const [donutChart, setDonutchart] = useState({});
 
     const fetchData = async () => {
-        setLoading(true);
-
         const [covidThai, covidGlobal, covidDaily] = await Promise.all([
             API.covidThai(),
             API.covidGlobal(),
