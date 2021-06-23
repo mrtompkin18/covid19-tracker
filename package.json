@@ -16,7 +16,7 @@
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "apexcharts": "^3.17.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "browserslist": "^4.13.0",
     "caniuse-lite": "^1.0.30001239",
