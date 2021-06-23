@@ -2,13 +2,10 @@
   "name": "covid19-tracker",
   "version": "1.0.0",
   "description": "",
-  "main": "pages/index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -p $PORT",
-    "heroku-postbuild": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "next start"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +18,8 @@
     "apexcharts": "^3.17.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "browserslist": "^4.13.0",
+    "caniuse-lite": "^1.0.30001239",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "next": "^9.3.1",
@@ -37,6 +36,7 @@
   },
   "devDependencies": {
     "file-loader": "^6.0.0",
-    "url-loader": "^4.0.0"
+    "url-loader": "^4.0.0",
+    "webpack": "^4.44.0"
   }
 }
